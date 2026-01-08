@@ -7,13 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Spinner
+        android:id="@+id/spinnerAlumnos"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/botonDatos"/>
+
+    <Button
+        android:id="@+id/botonDatos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Datos"
+        app:layout_constraintTop_toBottomOf="@id/spinnerAlumnos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/botonFoto"
+        app:layout_constraintBottom_toTopOf="@id/placeholderFragment"/>
+
+    <Button
+        android:id="@+id/botonFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Foto"
+        app:layout_constraintTop_toBottomOf="@id/spinnerAlumnos"
+        app:layout_constraintStart_toEndOf="@id/botonDatos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/placeholderFragment"/>
+
+    <FrameLayout
+        android:id="@+id/placeholderFragment"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@id/botonDatos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textViewDelegado">
+
+
+    </FrameLayout>
+    <TextView
+        android:id="@+id/textViewDelegado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sin delegado"
+        app:layout_constraintTop_toBottomOf="@id/placeholderFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

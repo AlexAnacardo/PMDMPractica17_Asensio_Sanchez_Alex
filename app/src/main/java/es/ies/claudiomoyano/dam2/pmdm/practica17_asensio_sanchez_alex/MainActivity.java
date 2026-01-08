@@ -61,8 +61,9 @@ public class MainActivity extends AppCompatActivity {
         Alumno alumno3 = new Alumno("Tirso", "Guerrero Fernandez", "34567891V", R.drawable.i3);
         Alumno alumno4 = new Alumno("Natalia", "No me acuerdo", "45678912G", R.drawable.i4);
         Alumno alumno5 = new Alumno("Jorge", "Tabuyo Rebordinos", "56789123E", R.drawable.i5);
+        Alumno alumno6 = new Alumno("SinFoto", "Alumno sin foto", "56789123E");
 
-        Alumno[] arraySpinner = {alumno1, alumno2, alumno3, alumno4, alumno5};
+        Alumno[] arraySpinner = {alumno1, alumno2, alumno3, alumno4, alumno5, alumno6};
 
         Spinner spinnerAlumnos = findViewById(R.id.spinnerAlumnos);
 
@@ -170,6 +171,32 @@ public class MainActivity extends AppCompatActivity {
                 alumnoSeleccionado = (Alumno)parent.getSelectedItem();
 
                 opcionSelecionada.callOnClick();
+
+                if(alumnoSeleccionado.getIdFoto() == 0){
+
+                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                    String channelId = "some_channel_id";
+                    CharSequence channelName = "Some Channel";
+                    int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+                    NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
+                    notificationManager.createNotificationChannel(notificationChannel);
+
+
+                    NotificationCompat.Builder constructorNotificacion = new NotificationCompat.Builder(MainActivity.this, channelId);
+                    constructorNotificacion.setSmallIcon(R.drawable.ic_notification);
+                    constructorNotificacion.setContentTitle("Alumno sin foto");
+
+                    constructorNotificacion.setContentText("El alumno "+ alumnoSeleccionado.getNombre() +" no tiene ninguna foto asignada");
+
+                    constructorNotificacion.setAutoCancel(true);
+
+
+                    notificationManager.notify(idNotifications, constructorNotificacion.build());
+
+                    idNotifications++;
+                }
             }
 
             @Override

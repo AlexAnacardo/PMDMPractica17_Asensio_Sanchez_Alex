@@ -56,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        String channelId = "some_channel_id";
+        CharSequence channelName = "Some Channel";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+        NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
+        notificationManager.createNotificationChannel(notificationChannel);
+
         Alumno alumno1 = new Alumno("Alex", "Asensio Sanchez", "12345678Z", R.drawable.i1);
         Alumno alumno2 = new Alumno("Diego", "Tabuyo Rebordinos", "23456789C", R.drawable.i2);
         Alumno alumno3 = new Alumno("Tirso", "Guerrero Fernandez", "34567891V", R.drawable.i3);
@@ -106,16 +115,6 @@ public class MainActivity extends AppCompatActivity {
                             TextView delegado = findViewById(R.id.textViewDelegado);
 
                             delegado.setText("Delegado: "+alumnoSeleccionado.getNombre());
-
-                            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-                            String channelId = "some_channel_id";
-                            CharSequence channelName = "Some Channel";
-                            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-                            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-                            notificationManager.createNotificationChannel(notificationChannel);
-
 
                             NotificationCompat.Builder constructorNotificacion = new NotificationCompat.Builder(MainActivity.this, channelId);
                             constructorNotificacion.setSmallIcon(R.drawable.ic_notification);
@@ -174,14 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(alumnoSeleccionado.getIdFoto() == 0){
 
-                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-                    String channelId = "some_channel_id";
-                    CharSequence channelName = "Some Channel";
-                    int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-                    NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-                    notificationManager.createNotificationChannel(notificationChannel);
 
 
                     NotificationCompat.Builder constructorNotificacion = new NotificationCompat.Builder(MainActivity.this, channelId);
